@@ -3,9 +3,7 @@
 from pathlib import Path
 from sys import exit, argv
 
-
-def print_forest(*args: int) -> str:
-    return ', '.join(map(str, args))
+from solution import print_forest
 
 
 def print_usage() -> None:
@@ -19,7 +17,7 @@ def validate_path(path: str | Path) -> bool:
 
 
 def main() -> None:
-    if len(argv) < 3 or not validate_path(argv[1]):
+    if len(argv) < 2 or not validate_path(argv[1]):
         print_usage()
         return
 
@@ -27,8 +25,11 @@ def main() -> None:
         trees_data = map(int, file.read().strip().split())
 
     forest_image = print_forest(*trees_data)
-    with open(argv[2], 'w', encoding='utf-8') as file:
-        file.write(forest_image)
+    print(forest_image)
+
+    if len(argv) == 3:
+        with open(argv[2], 'w', encoding='utf-8') as file:
+            file.write(forest_image)
 
 
 if __name__ == '__main__':
