@@ -29,10 +29,10 @@ class Tree:
     def _create_tree_data(tiers: int) -> list[str]:
         data: list[str] = []
 
-        stars = ''
-        for i in range(0, tiers + 1):
-            stars = stars + '**' if stars else '*'
-            data.append(stars)
+        current_tier = ['*']
+        for i in range(0, tiers):
+            current_tier.append(current_tier[-1] + '**')
+            data.extend(current_tier)
 
         max_stars_count = len(data[-1])
         data = [f'{line: ^{max_stars_count}}' for line in data]
