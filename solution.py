@@ -2,6 +2,8 @@
 
 
 class Tree:
+    __slots__ = ('_data', )
+
     def __init__(self, tiers: int):
         self._data = self._create_tree_data(tiers)
 
@@ -35,12 +37,13 @@ class Tree:
             data.extend(current_tier)
 
         max_stars_count = len(data[-1])
-        data = [f'{line: ^{max_stars_count}}' for line in data]
+        data = [line.center(max_stars_count) for line in data]
         return data
 
 
 def print_forest(*args: int) -> str:
     trees = [Tree(tiers) for tiers in args]
+
     max_height = max(trees, key=lambda item: item.height).height
     for tree in trees:
         tree.append_air_lines(max_height - tree.height)
