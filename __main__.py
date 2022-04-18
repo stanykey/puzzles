@@ -7,16 +7,20 @@ from solution import print_forest
 
 
 def print_usage() -> None:
+    """Print program usage aka help message."""
     print(f'usage: {__package__} <input-file> <output-file>')
 
 
 def validate_path(path: str | Path) -> bool:
+    """Check that path is valid."""
     if not isinstance(path, Path):
         path = Path(path)
     return path.exists() and path.is_file()
 
 
 def main() -> None:
+    """Application entry point."""
+
     if len(argv) < 2 or not validate_path(argv[1]):
         print_usage()
         return

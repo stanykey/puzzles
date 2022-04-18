@@ -2,6 +2,7 @@
 
 
 class Tree:
+    """Represent tree text image."""
     __slots__ = ('_data', )
 
     def __init__(self, tiers: int):
@@ -9,17 +10,21 @@ class Tree:
 
     @property
     def width(self) -> int:
+        """Return image width."""
         return len(self._data[0])
 
     @property
     def height(self) -> int:
+        """Return image height."""
         return len(self._data)
 
     @property
     def data(self) -> list[str]:
+        """Return image data."""
         return self._data
 
     def append_air_lines(self, amount: int):
+        """Add filler on top of image."""
         if not amount:
             return
 
@@ -32,7 +37,7 @@ class Tree:
         data: list[str] = []
 
         current_tier = ['*']
-        for i in range(0, tiers):
+        for _ in range(0, tiers):
             current_tier.append(current_tier[-1] + '**')
             data.extend(current_tier)
 
@@ -42,6 +47,7 @@ class Tree:
 
 
 def print_forest(*args: int) -> str:
+    """Print forest into string."""
     trees = [Tree(tiers) for tiers in args]
 
     max_height = max(trees, key=lambda item: item.height).height
