@@ -1,7 +1,7 @@
 """Application to test the implementation of the task."""
 
 from pathlib import Path
-from sys import exit, argv
+from sys import argv
 
 from solution import print_forest
 
@@ -33,4 +33,4 @@ def main() -> None:
 
 
 if __name__ == '__main__':
-    exit(main())
+    main()
