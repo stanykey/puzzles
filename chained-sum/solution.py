@@ -2,13 +2,15 @@
 
 
 def chain_sum(init):
-    values = [init]
+    result = init
 
-    def chain(*args):
-        if args:
-            values.extend(args)
-            return chain
-        return sum(values)
+    def chain(number=None):
+        nonlocal result
+        if number is None:
+            return result
+
+        result += number
+        return chain
     return chain
 
 
