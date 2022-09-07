@@ -1,17 +1,18 @@
 """Solution of the task."""
 
 
-def chain_sum(init):
-    result = init
+def chain_sum(value: int):
+    class Chain:
+        def __init__(self, init: int):
+            self._value = init
 
-    def chain(number=None):
-        nonlocal result
-        if number is None:
-            return result
+        def __call__(self, number=None):
+            if number is None:
+                return self._value
+            self._value += number
+            return self
 
-        result += number
-        return chain
-    return chain
+    return Chain(value)
 
 
 def main() -> None:
