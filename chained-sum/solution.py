@@ -1,15 +1,9 @@
 """Solution of the task."""
 
 
-class chain_sum:
-    def __init__(self, init: int):
-        self._value = init
-
-    def __call__(self, number=None):
-        if number is None:
-            return self._value
-        self._value += number
-        return self
+class chain_sum(int):
+    def __call__(self, number: int = 0):
+        return chain_sum(self + number)
 
 
 def main() -> None:
