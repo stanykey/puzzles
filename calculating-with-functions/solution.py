@@ -1,5 +1,5 @@
 """Solution of the task."""
-from functools import partial, wraps
+from functools import partial
 from operator import add, sub, mul, truediv
 from typing import Callable
 
@@ -7,38 +7,35 @@ from typing import Callable
 #
 # Operations
 #
-def operation_function(operation: Callable[[int, int], int], value: int) -> Callable[[int], int]:
-    @wraps(operation)
-    def wrapper(argument: int):
-        return operation(argument, value)
-    return wrapper
+def _operator(operator: Callable[[int, int], int], rhs: int) -> Callable[[int], int]:
+    return lambda lhs: operator(lhs, rhs)
 
 
-plus = partial(operation_function, add)
-minus = partial(operation_function, sub)
-times = partial(operation_function, mul)
-divided_by = partial(operation_function, truediv)
+plus = partial(_operator, add)
+minus = partial(_operator, sub)
+times = partial(_operator, mul)
+divided_by = partial(_operator, truediv)
 
 
 #
 # Numbers
 #
-def number_function(value: int = 0, operation: Callable[[int], int] = None) -> int:
+def _digit(value: int = 0, operation: Callable[[int], int] = None) -> int:
     if not operation:
         return value
     return int(operation(value))
 
 
-zero = partial(number_function, 0)
-one = partial(number_function, 1)
-two = partial(number_function, 2)
-three = partial(number_function, 3)
-four = partial(number_function, 4)
-five = partial(number_function, 5)
-six = partial(number_function, 6)
-seven = partial(number_function, 7)
-eight = partial(number_function, 8)
-nine = partial(number_function, 9)
+zero = partial(_digit, 0)
+one = partial(_digit, 1)
+two = partial(_digit, 2)
+three = partial(_digit, 3)
+four = partial(_digit, 4)
+five = partial(_digit, 5)
+six = partial(_digit, 6)
+seven = partial(_digit, 7)
+eight = partial(_digit, 8)
+nine = partial(_digit, 9)
 
 
 def main() -> None:
