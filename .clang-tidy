@@ -1,0 +1,64 @@
+---
+Checks: >
+  -*,
+  bugpron-*,
+    -bugprone-easily-swappable-parameters,
+    -bugprone-exception-escape,
+  clang-analyzer-*,
+  readability-*,
+    -readability-implicit-bool-conversion,
+    -readability-named-parameter,
+    -readability-uppercase-literal-suffix,
+    -readability-identifier-length,
+    -readability-redundant-access-specifiers,
+    -readability-convert-member-functions-to-static,
+  performance-*,
+    -performance-avoid-endl,
+  cppcoreguidelines-*,
+    -cppcoreguidelines-pro-bounds-constant-array-index,
+    -cppcoreguidelines-avoid-magic-numbers,
+    -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  modernize-*,
+    -modernize-use-trailing-return-type,
+  misc-*,
+    -misc-non-private-member-variables-in-classes,
+    -misc-definitions-in-headers,
+    -misc-no-recursion,
+    -misc-static-assert,
+    -misc-unused-alias-decls,
+    -misc-include-cleaner,
+  hicpp-*,
+    -hicpp-signed-bitwise,
+    -hicpp-named-parameter,
+    -hicpp-uppercase-literal-suffix
+
+
+WarningsAsErrors: '*'
+AnalyzeTemporaryDtors: false
+
+FormatStyle: file
+
+CheckOptions:
+  readability-identifier-naming.NamespaceCase: "lower_case"
+  readability-identifier-naming.ClassCase: "CamelCase"
+  readability-identifier-naming.StructCase: "CamelCase"
+  readability-identifier-naming.EnumCase: "CamelCase"
+  readability-identifier-naming.FunctionCase: "lower_case"
+  readability-identifier-naming.TypedefCase: "CamelCase"
+  readability-identifier-naming.TypeAliasCase: "CamelCase"
+  readability-identifier-naming.TemplateParameterCase: "CamelCase"
+  readability-identifier-naming.ValueTemplateParameterCase: "CamelCase"
+  readability-identifier-naming.ParameterCase: "lower_case"
+  readability-identifier-naming.VariableCase: "lower_case"
+  readability-identifier-naming.StaticVariableCase: "lower_case"
+  readability-identifier-naming.PrivateMemberCase: "lower_case"
+  readability-identifier-naming.PrivateMemberSuffix: "_"
+  readability-identifier-naming.ProtectedMemberCase: "lower_case"
+  readability-identifier-naming.ProtectedMemberSuffix: "_"
+  readability-identifier-naming.ConstantMemberCase: "lower_case"
+  readability-identifier-naming.ConstantMemberSuffix: "_"
+  readability-identifier-naming.StaticConstantCase: "CamelCase"
+  readability-identifier-naming.GlobalConstantCase: "UPPER_CASE"
+  readability-identifier-naming.EnumConstantCase: "UPPER_CASE"
+
+...
